@@ -22,6 +22,15 @@ The Leukemia dataset \cite{leukemia} consists of microscopic images of white blo
 \section{SimCLR algorithm}
 SimCLR (Simple Contrastive Learning of Representations) is a self-supervised learning framework designed to learn visual representations without requiring labeled data. The core idea of SimCLR is to maximize agreement between differently augmented views of the same image via a contrastive loss. This method operates in several steps:
 
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=\textwidth]{figs/SimCLR.png}
+\caption{
+SimCLR workflow overview \cite{tsimcne}.
+}
+\label{fig:secex}
+\end{figure}
+
 \subsection{Data Augmentation}
 Each image in the dataset is transformed twice using random data augmentation techniques such as cropping, resizing, color distortion, and Gaussian blurring to generate two correlated views, denoted as positive pairs. 
 
