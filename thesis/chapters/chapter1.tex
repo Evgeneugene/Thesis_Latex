@@ -1,0 +1,30 @@
+\chapter{Introduction}
+\label{chap:intro}
+\chaptermark{Optional running chapter heading}
+
+\section{Background}
+A large amount of data generated today is unlabeled, which complicates the extraction of useful information. Contrastive learning, a type of unsupervised learning, has been effective in leveraging such data, particularly in areas where labeled data is scarce or expensive to obtain. Existing frameworks like SimCLR \cite{simclr} and Momentum Contrast (MoCo) \cite{moco} have shown potential but often struggle with large batch sizes and hyperparameter sensitivity.
+
+Current methods face limitations with scalability and robustness, especially when applied to complex datasets with varying characteristics. These issues highlight the need for more adaptable and efficient learning models.
+
+\section{Research Questions}
+This thesis conducts a comparative analysis of modern techniques for 2D data visualization within the framework of unsupervised learning. It examines whether integrating the Area Under the Curve (AUC) metric \cite{sharma2023auc} and Hard Negative Sampling \cite{robinson2020contrastive} with contrastive learning frameworks can address their known limitations and improve their performance across diverse datasets.
+
+\section{Experimental Approach}
+The research employs a comparative experimental design using different datasets to evaluate the performance of enhanced contrastive learning methods against traditional approaches. The focus is on accuracy and robustness in visualizing data.
+
+\section{Results and Conclusions}
+Results show that adding the AUC metric to contrastive learning frameworks increases their robustness, particularly in limited-resource settings. Also, the adapted framework, t-SimCNE with AUC-CL, provides more clear and interpretable visual representations.
+
+These improvements are significant for data analysis in areas with limited labeled data, potentially improving decision-making and advancing research in various fields.
+
+\section{Thesis Structure}
+The structure of our paper is as follows:
+
+\begin{itemize}
+    \item Chapter 2: Literature Review – Reviews theoretical background and previous research in unsupervised and contrastive learning.
+    \item Chapter 3: Methodology – Describes the experimental \item methodologies, data sources, and specific frameworks used.
+    \item Chapter 4: Results and Analysis – Discusses the experimental results and analyzes the findings.
+    \item Chapter 5: Discussion – Interprets the results, discusses implications and limitations, and suggests future research directions.
+    \item Chapter 6: Conclusion – Summarizes the study's findings and contributions and outlines future research possibilities.
+\end{itemize}
