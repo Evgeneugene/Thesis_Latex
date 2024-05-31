@@ -8,14 +8,13 @@ A large amount of data generated today is unlabeled, which complicates the extra
 Current methods face limitations with scalability and robustness, especially when applied to complex datasets with varying characteristics. These issues highlight the need for more adaptable and efficient learning models.
 
 \section{Research Questions}
-This thesis conducts a comparative analysis of modern techniques for 2D data visualization within the framework of unsupervised learning. It examines whether integrating the Area Under the Curve (AUC) metric \cite{sharma2023auc} and Hard Negative Sampling \cite{robinson2020contrastive} with contrastive learning frameworks can address their known limitations and improve their performance across diverse datasets.
+This thesis conducts a comparative analysis of modern techniques for 2D data visualization within the framework of unsupervised learning. It examines whether integrating the Area Under the Curve (AUC) metric \cite{sharma2023auc} with contrastive learning frameworks can address their known limitations and improve their performance across diverse datasets.
 
 \section{Experimental Approach}
 The research employs a comparative experimental design using different datasets to evaluate the performance of enhanced contrastive learning methods against traditional approaches. The focus is on accuracy and robustness in visualizing data.
 
 \section{Results and Conclusions}
-Results show that adding the AUC metric to contrastive learning frameworks increases their robustness, particularly in limited-resource settings. Also, the adapted framework, t-SimCNE with AUC-CL, provides more clear and interpretable visual representations.
-
+Results show that adding the AUC metric to contrastive learning frameworks increases their robustness, particularly in limited-resource settings. Also, the adapted framework, t-SimCNE with AUC-CL, provides more clear and interpretable visual representations. For example, The initial approach used a batch size of at least 1024, while we make it possible to achieve similarly good results with a batch size of 256.
 These improvements are significant for data analysis in areas with limited labeled data, potentially improving decision-making and advancing research in various fields.
 
 \section{Thesis Structure}

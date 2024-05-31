@@ -36,10 +36,6 @@ My implementation began with the CIFAR-10 dataset, a standard benchmark in the m
 \label{fig:secex}
 \end{figure}
 
-\section{Hard Negative Sampling}
-To amplify the contrastive learning signal by focusing on difficult yet informative negative examples, we integrated a hard negative sampling strategy into the existing InfoNCE loss function. The adapted InfoNCE loss, which we implemented as InfoNCECauchyHardNegative, has a temperature parameter and a beta parameter. The temperature controls the scale of the distribution, affecting the separation between similar and dissimilar points, while the beta parameter adjusts the emphasis on harder negatives.
-
-
 \section{AUC-CL}
 
 Besides the Hard Negative Sampling approach, we tested the loss function of the AUC-CL algorithm. It the same sense as previously, it calculates the similarity between features within each group and across the two groups using a similarity function that emphasizes features that are close in the feature space. This similarity function is fine-tuned with a temperature parameter, which helps control the sensitivity of the function to differences between features.
