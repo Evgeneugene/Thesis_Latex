@@ -4,7 +4,7 @@
 
 This chapter is devoted to a review of the literature, which is fundamental for solving the tasks set in our study. The focus is on the use of unsupervised contrastive learning methods to extract features from various datasets, for example, in medicine. 
 
-Section I describes the principles of contrastive learning, its application in areas with limited labeled data. Section II covers the main methods for dimensionality reduction and visualization of high-dimensional data.
+Section I describes the principles of contrastive learning, its application in areas with limited labeled data and advances in negative sampling. Section II covers the main methods for dimensionality reduction and visualization of high-dimensional data.
 
 \section{Unsupervised Contrastive Learning Approaches}
 Contrastive learning is a deep learning technique that is able to derive meaningful representations from data without relying on labels. It focuses on contrasting positive and negative sample pairs and can be used for any type of data, given appropriate augmentations exist.
@@ -18,6 +18,26 @@ The Momentum Contrast (MoCo) framework by He et al. \cite{moco} further advances
 The work by Azizi et al. \cite{azizi} focuses on using large-scale self-supervised models for medical image classification. It shows how big self-learning models can help better use the vast number of medical images that do not have labels and improve and automate medical diagnosis tools.
 
 Sharma et al. \cite{sharma2023auc} addressed the limitations associated with large batch sizes in contrastive learning. They introduced the AUC-Contrastive Learning (AUC-CL) framework, which integrates the area under the ROC curve (AUC) maximization with contrastive learning principles. This approach reduces the dependency on large batch sizes, a common challenge in self-supervised learning frameworks such as SimCLR and MoCo.
+
+\subsection{Advances in Negative Sampling}
+The quality of negative samples is crucial in contrastive learning because it directly influences the learned representations. Recent advancements aim to address biases in negative sampling to enhance model performance.
+
+A significant advancement is the Positive-Unlabeled Noise Contrastive Estimation (puNCE) method by Acharya et al. \cite{pucl}. This method assigns weights to each sample, with labeled positives given full weight and unlabeled samples considered both positive and negative with probabilities based on the class. This algorithm improves representation quality, particularly with limited labeled data.
+
+Debiased Contrastive Learning (DCL) by Chuang et al. \cite{chuang2020debiased} reduces sampling bias by adjusting the importance of negative samples based on difficulty, making a training process more balanced.
+
+Adding to these advancements, Robinson et al. \cite{robinson2020contrastive} introduce a method that improves the sampling of hard negatives by creating a tunable distribution that prefers negative pairs whose representations are currently very similar. This approach addresses the challenge of using hard negatives without supervision, enhancing the performance of contrastive learning models without additional computational overhead.
+
+\subsection{Adaptability and Enhancement of Unsupervised Learning of Contrastive Learning Across Diverse Datasets}
+
+The success of contrastive learning in medical imaging depends on the strategic use of data augmentations, as underscored by Tian et al. \cite{tian2022understanding}. These augmentations generate diverse perspectives of the same image, which is crucial for highlighting key features. Van der Sluijs et al. delve into their impact on learning representations \cite{van2024exploring}. Specifically, Kang et al. suggest rotations, flips, and color adjustments relevant to tissue staining using medical images' spatial and visual characteristics \cite{kang2023benchmarking}. Moreover, Using adjacent patches as matching examples, as discussed by Li et al. \cite{li2021dual} and Wang et al. \cite{wang2021transpath}, takes advantage of the natural layout of cells in histopathological samples.
+
+
+A study by Van Gansbeke et al. \cite{van2021revisiting} shows the flexibility and effectiveness of contrastive unsupervised learning when using the MoCo framework across different types of datasets. They underscore the robust performance of this learning approach in various settings. Also, using data augmentations like random cropping helps ensure that similar pairs retain common information, which supports effective feature learning.
+
+Van Gansbeke et al. also discuss how small adjustments, such as implementing multi-scale cropping, introducing stronger augmentations, and adding nearest neighbors, can enhance the representations learned. These modifications make the representations more adaptable to a wide array of tasks. The paper also notes that the MoCo framework, with a multi-crop approach, produces representations that can be directly used for tasks like semantic segment retrieval without further fine-tuning.
+
+Zang et al. introduce a new technique known as DiffAug \cite{zang2023boosting}, which enhances the potential of unsupervised learning models. By generating diverse training examples, DiffAug enriches the learning environment, allowing models to capture a broader array of features present in complex datasets.
 
 \section{Dimensionality reduction for visualisation}
 

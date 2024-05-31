@@ -36,6 +36,42 @@ My implementation began with the CIFAR-10 dataset, a standard benchmark in the m
 \label{fig:secex}
 \end{figure}
 
+\section{Hard Negative Sampling}
+
+To amplify the contrastive learning signal by focusing on difficult yet informative negative examples, we integrated a hard negative sampling strategy into the existing InfoNCE loss function. The adapted InfoNCE loss has a temperature parameter and a beta parameter. The temperature controls the scale of the distribution, affecting the separation between similar and dissimilar points, while the beta parameter adjusts the emphasis on harder negatives.
+
+\subsection{Implementation}
+
+\begin{enumerate}
+  \item {Similarity Calculations}:
+  \begin{itemize}
+    \item \( \text{sim}_{aa} \), \( \text{sim}_{bb} \), and \( \text{sim}_{ab} \) are computed using a Cauchy-based similarity function, where \(a\) and \(b\) are two views of the data. The similarity between embeddings is scaled by the \textit{temperature} and squared distances are transformed using the Cauchy kernel. 
+  \end{itemize}
+
+  \item {Alignment and Uniformity}:
+  \begin{itemize}
+    \item {Tempered Alignment}: We compute the log of diagonal elements of \( \text{sim}_{ab} \), which represents the similarity of corresponding pairs in \(a\) and \(b\). The mean of these log values aims to maximize the agreement between positive pairs.
+    \item {Masking}: We mask out self-similarities (i.e., diagonal elements of \( \text{sim}_{aa} \) and \( \text{sim}_{bb} \)) to zero to avoid trivial solutions.
+  \end{itemize}
+
+  \item {Reweighting Hard Negatives}:
+  \begin{itemize}
+    \item We exponentially reweight the similarity matrices (\( \text{sim}_{ab} \), \( \text{sim}_{aa} \), and \( \text{sim}_{bb} \)) using the \( \beta \) parameter. This emphasizes harder negatives (samples with higher similarity values) by increasing their contribution to the loss.
+    \item These reweighted matrices are normalized across each row to form a distribution.
+  \end{itemize}
+
+   \item {Weighted LogSumExp Computation}:
+  \begin{itemize}
+    \item \textit{weighted\_logsumexp\_1} and \textit{weighted\_logsumexp\_2} compute the log of the sum of the exponential of the reweighted similarities. This is done to make the similarities contribute according to their magnitudes after reweighting. These values aim to maximize the dissimilarity among negative pairs.
+  \end{itemize}
+
+  \item {Loss Calculation}:
+  \begin{itemize}
+    \item The final loss is computed as the negative sum of \textit{tempered\_alignment} and the average of \textit{weighted\_logsumexp\_1} and \textit{weighted\_logsumexp\_2}. This pushes the model to align positive pairs closely on the embedding space while pushing away the negatives, focusing on those that are harder.
+  \end{itemize}
+\end{enumerate}
+
+
 \section{AUC-CL}
 
 Besides the Hard Negative Sampling approach, we tested the loss function of the AUC-CL algorithm. It the same sense as previously, it calculates the similarity between features within each group and across the two groups using a similarity function that emphasizes features that are close in the feature space. This similarity function is fine-tuned with a temperature parameter, which helps control the sensitivity of the function to differences between features.

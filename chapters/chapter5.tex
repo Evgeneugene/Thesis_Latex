@@ -32,7 +32,7 @@ Figure~\ref{fig:med_tsne} illustrates the 2D visualizations with the use of stan
 \begin{itemize}
     \item They don't clearly show details like outliers or different subgroups, making them harder to understand compared to t-SimCNE visualizations
     \item They can't be used to add new images into an already existing visualization, which is something that can be very useful in real-world uses.
-\end{itemize};
+\end{itemize}
 
 \begin{figure}[hbt]
 \centering
@@ -43,7 +43,17 @@ Figure~\ref{fig:med_tsne} illustrates the 2D visualizations with the use of stan
 \label{fig:tsimcne_auc_cl}
 \end{figure}
 
- The AUC-CL approach has shown a small rise in performance. Figure~\ref{fig:tsimcne_auc_cl} shows that our implementation of the t-SimCNE algorithm with integration of the AUC-CL approach resulted in a better visual results than both of the previous methods and enhanced ability to discern distinct data clusters more clearly, while using a smaller batch size (256), which requires much less computing power.
+
+Unfortunately, our hard negative sampling approach had neither visual nor metrical improvements (Figure~\ref{fig:hardneg}). However, the AUC-CL approach has shown a small rise in performance. Figure~\ref{fig:tsimcne_auc_cl} shows that our implementation of the t-SimCNE algorithm with integration of the AUC-CL approach resulted in a better visual results than both of the previous methods and enhanced ability to discern distinct data clusters more clearly, while using a smaller batch size (256), which requires much less computing power.
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=\textwidth]{figs/hardneg.png}
+\caption{
+Our Hard Negative Sampling approach for CIFAR-10 dataset with 150 epochs.
+}
+\label{fig:hardneg}
+\end{figure}
 
 \subsection{Quantitative Evaluation}
 
