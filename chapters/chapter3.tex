@@ -117,8 +117,10 @@ When combined with SimCLR, t-SNE is used to further process the 128-dimensional 
 
 
 \section{Hard Negative Sampling}
-We integrated hard negative sampling into the t-SimCNE framework to refine the model's ability to differentiate between similar yet distinct image features effectively. This method addresses the challenge of selecting informative negatives without supervision.
+We integrated hard negative sampling into the t-SimCNE framework to refine the model's ability to differentiate between similar yet distinct image features. 
+Hard negative samples are those data points that are close to the anchor point in the embedding space but have different classes. By emphasizing these hard negatives, t-SimCNE can generate embeddings that more accurately reflect the underlying data structure and improve the separation between different classes in complex datasets.
 
+\subsection{Algorithm Overview}
 The model processes inputs through key stages:
 
 \begin{enumerate}
@@ -140,10 +142,6 @@ The model processes inputs through key stages:
   \item Loss Calculation:
   The final loss combines the alignment with the dissimilarity measures from the reweighted negatives to improve embedding quality.
 \end{enumerate}
-
-
-\subsection{Importance}
-Hard negative samples are those data points that are close to the anchor point in the embedding space but have different classes. By emphasizing these hard negatives, t-SimCNE can generate embeddings that more accurately reflect the underlying data structure and improve the separation between different classes in complex datasets.
 
 
 \section{AUC-CL Framework}
